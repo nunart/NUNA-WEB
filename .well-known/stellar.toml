@@ -7,7 +7,7 @@ ACCOUNTS=["GBD5JD4SQW7F55GHPNNGUCDJBJUQJSTVQUFFEYLTEFESU3MUWAZCR2UB","GAN35V5CGH
 [DOCUMENTATION]
 ORG_NAME="NUNA ORG"
 ORG_URL="nunaproject.art"
-ORG_LOGO="https://nunaproject.art/t/nunatoken.png"
+ORG_LOGO="https://nunaproject.art/images/icono/nuna-exlibris.png"
 ORG_DESCRIPTION="Art and culture are part of our life and characterise the society in which we live. Nuna is an artistic initiative that aims to support artistic creation, dissemination and research. Organises expositions and publications, gives rewards and support artistic creation, sponsorize galleries. It promotes the art and the team work between artists from different disciplines in various spaces and outside the usual channels of artistic promotion (such as NFTs platforms, residences, talks…)"
 ORG_TWITTER="nunaprojectart"
 ORG_OFFICIAL_EMAIL="nunartistas@gmail.com"
@@ -20,6 +20,6 @@ issuer="GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW"
 display_decimals=7
 name="NUNA"
 desc="NUNA is a token for Art."
-image="https://nunaproject.art/images/icono/nuna-exlibris.png"
+image="https://nunaproject.art/images/icono/nuna.png"
 fixed_number=1000000000
 status="live"

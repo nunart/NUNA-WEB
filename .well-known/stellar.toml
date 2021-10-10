@@ -1,0 +1,25 @@
+VERSION="2.0.0"
+
+NETWORK_PASSPHRASE="Public Global Stellar Network ; September 2015"
+
+ACCOUNTS=["GBD5JD4SQW7F55GHPNNGUCDJBJUQJSTVQUFFEYLTEFESU3MUWAZCR2UB","GAN35V5CGHN6Z3ZISUXVFEFOU3DW46DLMSWEI5IS7NMNDK3CBJSSDI5X","GC4VPFJK4WCETBMMFHDSOLHRM3IB2FWZXMCOIWQK6GY24ERQVZ5X34WN","GB5JC7CTRGYWW7BWYQL5BKRG7BYIGAQLD4UE2HZNFFHE4L7NMUBPE2YE"]
+
+[DOCUMENTATION]
+ORG_NAME="NUNA ORG"
+ORG_URL="nunaproject.art"
+ORG_LOGO="https://nunaproject.art/t/nunatoken.png"
+ORG_DESCRIPTION="Art and culture are part of our life and characterise the society in which we live. Nuna is an artistic initiative that aims to support artistic creation, dissemination and research. Organises expositions and publications, gives rewards and support artistic creation, sponsorize galleries. It promotes the art and the team work between artists from different disciplines in various spaces and outside the usual channels of artistic promotion (such as NFTs platforms, residences, talks…)"
+ORG_TWITTER="nunaprojectart"
+ORG_OFFICIAL_EMAIL="nunartistas@gmail.com"
+
+
+
+[[CURRENCIES]]
+code="NUNA"
+issuer="GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW"
+display_decimals=7
+name="NUNA"
+desc="NUNA is a token for Art."
+image="https://nunaproject.art/t/nunatoken.png"
+fixed_number=1000000000
+status="live"

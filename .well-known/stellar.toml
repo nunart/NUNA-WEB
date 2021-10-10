@@ -20,6 +20,6 @@ issuer="GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW"
 display_decimals=7
 name="NUNA"
 desc="NUNA is a token for Art."
-image="https://nunaproject.art/images/icono/nuna.png"
+image="https://nunaproject.art/images/icono/nuna-exlibris.png"
 fixed_number=1000000000
 status="live"

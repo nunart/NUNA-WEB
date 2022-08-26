@@ -16,6 +16,7 @@ ORG_OFFICIAL_EMAIL="nunartistas@gmail.com"
 [[CURRENCIES]]
 code="NUNA"
 issuer="GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW"
+is_asset_anchored="true"
 display_decimals=7
 name="NUNA"
 desc="NUNA is a token for Art. Enjoy!"

@@ -441,10 +441,10 @@
             await axios.get(config.price_url).then(response => {
                 price = parseFloat(response.data._embedded.records[0].destination_amount)
             })
-            document.getElementById('tvl').innerHTML = "$" + Number(total_staked*(price/1000)).toFixed(5)
+            document.getElementById('tvl').innerHTML = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', currencyDisplay: 'narrowSymbol'}).format((Number(total_staked*(price/1000)).toFixed(2)))
             document.getElementById('num_stakers').innerHTML = new Set(staker_list).size
             document.getElementById('apy').innerHTML = (Math.round((config.daily_reward_amount/total_staked)*365*100)) + "%"
-            document.getElementById('total').innerHTML = total_staked
+            document.getElementById('total').innerHTML =  new Intl.NumberFormat('en-US').format(total_staked)
         }
         
         async function get_my_staked(){

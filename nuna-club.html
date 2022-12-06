@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/10.4.0/stellar-sdk.min.js"></script>
+</head>
+<style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+</style>
+<body>
+    <h3>Top 50 Stakers for NUNA:GCX2ENO...</h3>
+    <table id="customers">
+        <thead>
+            <th>Account</th>
+            <th>Amount Staked</th>
+        </thead>
+        <tbody id="staker_body">
+            
+        </tbody>
+    </table>
+</body>
+<script>
+
+    config = {
+        contract_address : "GAKFSPSLDGQE6CVJB53LYRZ7L5JKBOQQPZPMB32MPEXDRWBGVZV5WXNI",
+        asset_code : "NUNA",
+        asset_issuer : "GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW",
+        valid_after_seconds : 2592000
+    }
+
+    const server = new StellarSdk.Server('https://horizon.stellar.org');
+    
+    function resolve_claimants(claimable){
+            if(claimable.claimants[0].destination === config.contract_address && claimable.claimants[0].predicate.unconditional  && claimable.claimants.length == 2){
+                diff = new Date(claimable.claimants[1].predicate.not.abs_before) - new Date(claimable.last_modified_time)
+                if(diff >= config.valid_after_seconds*1000){
+                    return true
+                }
+            }
+            return false
+        }
+
+    async function get_staking_transactions(){
+            next = true
+            total_staked = 0
+            staker_list = []
+            resp = await server.claimableBalances()        
+                .claimant(config.contract_address)
+                .asset(new StellarSdk.Asset(config.asset_code,config.asset_issuer))
+                .limit(200)
+                .call()
+            while(next){
+                if(resp.records.length > 0){
+                    resp.records.forEach(element => {
+                        if(resolve_claimants(element)){
+                        staker_list.push({
+                            account : element.sponsor,
+                            amount : Number(element.amount)
+                        })
+                        }
+                        
+                    });
+                    resp = await resp.next()
+                }
+                else{
+                    break
+                }
+            }
+            const accounts = new Map()
+            staker_list.forEach(staker => {
+                if (accounts.has(staker.account)) {
+                 accounts.set(staker.account, accounts.get(staker.account) + staker.amount);
+                }
+                else{
+                accounts.set(staker.account, staker.amount)
+                }
+            })            
+            return (new Map([...accounts.entries()].sort((a, b) => b[1] - a[1])))
+        }
+        
+    $(document).ready(async function(){
+        const table = $("#staker_body")
+        const sorted_stakers = await get_staking_transactions()
+        var count = 0
+        for (let [key,value] of sorted_stakers.entries()){
+            if(count < 50){
+            table.append(`
+            <tr>
+                <td><a href='https://stellar.expert/public/explorer/account/${key}'>${key.slice(0,30)}...</a></td>
+                <td>${value.toFixed(0)} NUNA</td>
+            </tr>
+            `)
+            count++
+            }
+            else{
+                break
+            }
+        }
+    })
+    
+</script>
+</html>

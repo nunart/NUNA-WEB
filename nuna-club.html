@@ -33,7 +33,7 @@
     }
 </style>
 <body>
-    <h3>Top 50 Stakers for NUNA:GCX2ENO...</h3>
+    <h3>Top 100 Stakers for NUNA:GCX2ENO...</h3>
     <table id="customers">
         <thead>
             <th>Account</th>
@@ -108,10 +108,10 @@
         const sorted_stakers = await get_staking_transactions()
         var count = 0
         for (let [key,value] of sorted_stakers.entries()){
-            if(count < 50){
+            if(count < 100){
             table.append(`
             <tr>
-                <td><a href='https://stellar.expert/public/explorer/account/${key}'>${key.slice(0,30)}...</a></td>
+                <td><a href='https://lumenscan.io/account/${key}'>${key}/a></td>
                 <td>${value.toFixed(0)} NUNA</td>
             </tr>
             `)

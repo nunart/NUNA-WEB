@@ -1,0 +1,15 @@
+{
+    "assetCode" : "NUNA",
+    "assetIssuer" : "GCX2ENOVSSOOH6G4HIOBMPCBFXHDVDGA546NK3ZFX3NP3QS25BKZBWOW",
+    "horizon" : "https://horizon.stellar.org",
+    "network" : "PUBLIC",
+    "contractAddress" : "GAKFSPSLDGQE6CVJB53LYRZ7L5JKBOQQPZPMB32MPEXDRWBGVZV5WXNI",
+    "dailyRewardAmount" : 70000,
+    "lockTimeSeconds" : 2593000,
+    "validAfterSeconds" : 2592000,
+    "hardCodedPriceEnabled" : false,
+    "hardCodedPriceDollars" : 10.5,
+    "toUsdc" : 1000,
+    "usdcCode" : "USDC",
+    "usdcIssuer" : "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+}

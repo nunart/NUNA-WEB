@@ -398,9 +398,7 @@
         // $("#token_price").html(TokenPrice)
     }
 
-    async function fillAccountData(){
 
-    }
 
     $("#staking_form").hide()
     $(document).ready(async function() {
@@ -429,6 +427,9 @@
                 $("#error").html("sending to horizon...")
                 try {
                     const createAndSubmitTX = await WalletSession.createStakingTransaction(inputAmount)
+                    if (createAndSubmitTX.error != null) {
+                        $("#error").html(error)
+                    }
                     console.log(createAndSubmitTX)
                     await refresh()
                     $("#error").html("success!")
@@ -455,12 +456,15 @@
                 $("#error").html("sending to horizon...")
                 try {
                     const createAndSubmitTX = await WalletSession.createUnStakingTransaction(inputAmount)
+                    if (createAndSubmitTX.error != null) {
+                        $("#error").html(error)
+                    }
                     console.log(createAndSubmitTX)
                     await refresh()
                     $("#error").html("success!")
                 }
                 catch(e) {
-                    $("#error").html("e")
+                    $("#error").html(e)
                 }
                 
             }
